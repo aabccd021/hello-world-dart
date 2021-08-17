@@ -32,6 +32,10 @@ Either<E, T> right<E, T>(T t) {
   return Right(t) as Either<E, T>;
 }
 
+Either<E, T> left<E, T>(E e) {
+  return Left(e) as Either<E, T>;
+}
+
 Either<E, TR> Function(Either<E, T>) map<TR, E, T>(TR Function(T t) mapper) {
   return (e) {
     final Either<dynamic, T> z = e;
