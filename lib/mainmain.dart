@@ -1,14 +1,13 @@
 import 'nani.dart' as E;
 
 class Pipe<T> {
-  final Pipe<TR> Function<TR>(TR Function(T t) mapper) _;
-  final T Function() _val;
-
-  Pipe(this._, this._val);
+  final Pipe<TR> Function<TR>(TR Function(T t) mapper) p;
+  final T Function() v;
+  const Pipe(this.p, this.v);
 }
 
-Pipe<T> _<T>(T t) {
-  return Pipe(<TR>(mapper) => _(mapper(t)), () => t);
+Pipe<T> pipe<T>(T t) {
+  return Pipe(<TR>(mapper) => pipe(mapper(t)), () => t);
 }
 
 E.Either<int, String> gettsu() {
@@ -19,10 +18,14 @@ int getLen(String s) {
   return s.length;
 }
 
+getsuga() {
+  return pipe(gettsu())
+      .p(E.map(getLen))
+      .p(E.map((t) => t > 10))
+      .p(E.map((t) => t ? 'yea' : 'now'))
+      .v();
+}
+
 main() {
-  final y = _(gettsu())
-      ._(E.map(getLen))
-      ._(E.map((t) => t > 10))
-      ._(E.map((t) => t ? 'yea' : 'now'))
-      ._val();
+  getsuga();
 }

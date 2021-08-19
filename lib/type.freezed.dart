@@ -13,152 +13,293 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$ObservableTearOff {
-  const _$ObservableTearOff();
+class _$UnionTearOff {
+  const _$UnionTearOff();
 
-  _Observable<T> call<T>(T state, List<void Function(T?)> listeners) {
-    return _Observable<T>(
-      state,
-      listeners,
+  Loading loading(String foo) {
+    return Loading(
+      foo,
+    );
+  }
+
+  ErrorDetails error(int bar) {
+    return ErrorDetails(
+      bar,
     );
   }
 }
 
 /// @nodoc
-const $Observable = _$ObservableTearOff();
+const $Union = _$UnionTearOff();
 
 /// @nodoc
-mixin _$Observable<T> {
-  T get state => throw _privateConstructorUsedError;
-  List<void Function(T?)> get listeners => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ObservableCopyWith<T, Observable<T>> get copyWith =>
+mixin _$Union {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String foo) loading,
+    required TResult Function(int bar) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String foo)? loading,
+    TResult Function(int bar)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(ErrorDetails value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(ErrorDetails value)? error,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ObservableCopyWith<T, $Res> {
-  factory $ObservableCopyWith(
-          Observable<T> value, $Res Function(Observable<T>) then) =
-      _$ObservableCopyWithImpl<T, $Res>;
-  $Res call({T state, List<void Function(T?)> listeners});
+abstract class $UnionCopyWith<$Res> {
+  factory $UnionCopyWith(Union value, $Res Function(Union) then) =
+      _$UnionCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ObservableCopyWithImpl<T, $Res>
-    implements $ObservableCopyWith<T, $Res> {
-  _$ObservableCopyWithImpl(this._value, this._then);
+class _$UnionCopyWithImpl<$Res> implements $UnionCopyWith<$Res> {
+  _$UnionCopyWithImpl(this._value, this._then);
 
-  final Observable<T> _value;
+  final Union _value;
   // ignore: unused_field
-  final $Res Function(Observable<T>) _then;
-
-  @override
-  $Res call({
-    Object? state = freezed,
-    Object? listeners = freezed,
-  }) {
-    return _then(_value.copyWith(
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as T,
-      listeners: listeners == freezed
-          ? _value.listeners
-          : listeners // ignore: cast_nullable_to_non_nullable
-              as List<void Function(T?)>,
-    ));
-  }
+  final $Res Function(Union) _then;
 }
 
 /// @nodoc
-abstract class _$ObservableCopyWith<T, $Res>
-    implements $ObservableCopyWith<T, $Res> {
-  factory _$ObservableCopyWith(
-          _Observable<T> value, $Res Function(_Observable<T>) then) =
-      __$ObservableCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T state, List<void Function(T?)> listeners});
+abstract class $LoadingCopyWith<$Res> {
+  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
+      _$LoadingCopyWithImpl<$Res>;
+  $Res call({String foo});
 }
 
 /// @nodoc
-class __$ObservableCopyWithImpl<T, $Res>
-    extends _$ObservableCopyWithImpl<T, $Res>
-    implements _$ObservableCopyWith<T, $Res> {
-  __$ObservableCopyWithImpl(
-      _Observable<T> _value, $Res Function(_Observable<T>) _then)
-      : super(_value, (v) => _then(v as _Observable<T>));
+class _$LoadingCopyWithImpl<$Res> extends _$UnionCopyWithImpl<$Res>
+    implements $LoadingCopyWith<$Res> {
+  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
+      : super(_value, (v) => _then(v as Loading));
 
   @override
-  _Observable<T> get _value => super._value as _Observable<T>;
+  Loading get _value => super._value as Loading;
 
   @override
   $Res call({
-    Object? state = freezed,
-    Object? listeners = freezed,
+    Object? foo = freezed,
   }) {
-    return _then(_Observable<T>(
-      state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as T,
-      listeners == freezed
-          ? _value.listeners
-          : listeners // ignore: cast_nullable_to_non_nullable
-              as List<void Function(T?)>,
+    return _then(Loading(
+      foo == freezed
+          ? _value.foo
+          : foo // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Observable<T> implements _Observable<T> {
-  _$_Observable(this.state, this.listeners);
+class _$Loading implements Loading {
+  const _$Loading(this.foo);
 
   @override
-  final T state;
-  @override
-  final List<void Function(T?)> listeners;
+  final String foo;
 
   @override
   String toString() {
-    return 'Observable<$T>(state: $state, listeners: $listeners)';
+    return 'Union.loading(foo: $foo)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Observable<T> &&
-            (identical(other.state, state) ||
-                const DeepCollectionEquality().equals(other.state, state)) &&
-            (identical(other.listeners, listeners) ||
-                const DeepCollectionEquality()
-                    .equals(other.listeners, listeners)));
+        (other is Loading &&
+            (identical(other.foo, foo) ||
+                const DeepCollectionEquality().equals(other.foo, foo)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(state) ^
-      const DeepCollectionEquality().hash(listeners);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(foo);
 
   @JsonKey(ignore: true)
   @override
-  _$ObservableCopyWith<T, _Observable<T>> get copyWith =>
-      __$ObservableCopyWithImpl<T, _Observable<T>>(this, _$identity);
+  $LoadingCopyWith<Loading> get copyWith =>
+      _$LoadingCopyWithImpl<Loading>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String foo) loading,
+    required TResult Function(int bar) error,
+  }) {
+    return loading(foo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String foo)? loading,
+    TResult Function(int bar)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(foo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(ErrorDetails value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(ErrorDetails value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _Observable<T> implements Observable<T> {
-  factory _Observable(T state, List<void Function(T?)> listeners) =
-      _$_Observable<T>;
+abstract class Loading implements Union {
+  const factory Loading(String foo) = _$Loading;
+
+  String get foo => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LoadingCopyWith<Loading> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ErrorDetailsCopyWith<$Res> {
+  factory $ErrorDetailsCopyWith(
+          ErrorDetails value, $Res Function(ErrorDetails) then) =
+      _$ErrorDetailsCopyWithImpl<$Res>;
+  $Res call({int bar});
+}
+
+/// @nodoc
+class _$ErrorDetailsCopyWithImpl<$Res> extends _$UnionCopyWithImpl<$Res>
+    implements $ErrorDetailsCopyWith<$Res> {
+  _$ErrorDetailsCopyWithImpl(
+      ErrorDetails _value, $Res Function(ErrorDetails) _then)
+      : super(_value, (v) => _then(v as ErrorDetails));
 
   @override
-  T get state => throw _privateConstructorUsedError;
+  ErrorDetails get _value => super._value as ErrorDetails;
+
   @override
-  List<void Function(T?)> get listeners => throw _privateConstructorUsedError;
+  $Res call({
+    Object? bar = freezed,
+  }) {
+    return _then(ErrorDetails(
+      bar == freezed
+          ? _value.bar
+          : bar // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorDetails implements ErrorDetails {
+  const _$ErrorDetails(this.bar);
+
   @override
+  final int bar;
+
+  @override
+  String toString() {
+    return 'Union.error(bar: $bar)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ErrorDetails &&
+            (identical(other.bar, bar) ||
+                const DeepCollectionEquality().equals(other.bar, bar)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(bar);
+
   @JsonKey(ignore: true)
-  _$ObservableCopyWith<T, _Observable<T>> get copyWith =>
+  @override
+  $ErrorDetailsCopyWith<ErrorDetails> get copyWith =>
+      _$ErrorDetailsCopyWithImpl<ErrorDetails>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String foo) loading,
+    required TResult Function(int bar) error,
+  }) {
+    return error(bar);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String foo)? loading,
+    TResult Function(int bar)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(bar);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Loading value) loading,
+    required TResult Function(ErrorDetails value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Loading value)? loading,
+    TResult Function(ErrorDetails value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorDetails implements Union {
+  const factory ErrorDetails(int bar) = _$ErrorDetails;
+
+  int get bar => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ErrorDetailsCopyWith<ErrorDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
